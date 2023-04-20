@@ -1,4 +1,27 @@
+class Cliente:
+    def __init__(self, nombre):
+        self.nombre = nombre
+        self.recomendaciones = 1
 
+    def agregar_recomendacion(self):
+        self.recomendaciones = self.recomendaciones +  1
+        print('El valor actual del Cliente es' + self.recomendaciones)
+
+class Requisito:
+    def __init__(self, nombre):
+        self.nombre = nombre
+        self.opiniones = set()
+        
+
+class Sprint:
+    def __init__(self, nombre):
+        self.nombre = nombre
+        
+  
+
+
+clientes = []
+requisitos = []
 while True:
     print('1 - Agregar cliente')
     print('2 - Agregar requisito')
@@ -11,38 +34,23 @@ while True:
 
     if opcion == 1:
         nombre = input('Ingrese el nombre del cliente: ')
-        id = input('Ingrese el ID del cliente: ')
-        clientes.append(Cliente(nombre, id))
+        clientes.append(Cliente(nombre))
     elif opcion == 2:
         req = input('Ingrese el nombre del requisito: ')
-        valor = int(input('Ingrese el valor del requisito: '))
-        requisitos[req] = valor
-    #elif opcion == 3:
+        requisitos.append(Requisito(req))
+
+    elif opcion == 3:
+        for i in range(len(clientes)):
+            print(i, clientes[i].nombre)
+        persona = int(input('Ingrese el numero del persona: '))
+        clientes[persona].agregar_recomendacion()
      
-    #elif opcion == 4:
+    elif opcion == 4:
+        print('Hola ')
+        
+
+
         
     #elif opcion == 5:
        
        
-class Cliente:
-    def __init__(self, nombre):
-        self.nombre = nombre
-        self.opiniones = {}
-        self.recomendaciones = set()
-
-    def agregar_opinion(self, requisito, opinion):
-        self.opiniones[requisito] = opinion
-
-    def agregar_recomendacion(self, cliente):
-        self.recomendaciones.add(cliente)
-
-class Requisito:
-    def __init__(self, nombre):
-        self.nombre = nombre
-        
-
-class Sprint:
-    def __init__(self, requisitos):
-        self.requisitos = requisitos
-        self.trabajo_realizado = set()
-  
