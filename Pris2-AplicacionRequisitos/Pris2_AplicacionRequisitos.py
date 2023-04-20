@@ -1,4 +1,5 @@
 import sys
+from typing import Self
 
 class Cliente:
     def __init__(self, nombre):
@@ -8,6 +9,7 @@ class Cliente:
     def agregar_recomendacion(self):
         self.importancia = self.importancia +  1
         print('El valor actual del Cliente es ' + str(self.importancia))
+
 
 
 class Requisito:
@@ -59,19 +61,35 @@ while True:
             print(i, requisitos[i].nombre)
         req = int(input('Ingrese el numero del requisito: '))
         requisitos[req].agregar_valor(clientes[persona])
-        input('Presione enter para continuar...')
-    
-     
+        input('Presione enter para continuar...') 
     elif opcion == 4:
         for i in range(len(clientes)):
             print(i, clientes[i].nombre)
         persona = int(input('Ingrese el numero del persona: '))
         clientes[persona].agregar_recomendacion() 
-        input('Presione enter para continuar...')
+        input('Presione enter para continuar...')  
+    elif opcion == 5:
+        acabado = False
+        # Ordenar requisitos por valor
+        requisitos_ordenados = sorted(requisitos, key=lambda x: x.valor, reverse= True)
 
-         
-    #elif opcion == 5:
-       
+        # Imprimir requisitos ordenados
+        esfuerzo = int(input('Ingrese el esfuerzo maximo'))
+        Sprint = 1
+        espacio = esfuerzo
+        while acabado == False:
+            print("Sprint " + str(Sprint))
+            while espacio > 0:
+                if len(requisitos_ordenados) == 0:
+                    acabado = True
+                    break
+                Actual = requisitos_ordenados.pop(0)
+                print(Actual.nombre)
+                espacio = espacio - 1
+            Sprint = Sprint + 1
+            espacio = esfuerzo
+            
+                    
     elif opcion == 6:
        sys.exit(0)
 
