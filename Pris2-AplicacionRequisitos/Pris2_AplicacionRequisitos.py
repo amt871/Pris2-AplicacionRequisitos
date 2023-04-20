@@ -1,3 +1,5 @@
+import sys
+
 class Cliente:
     def __init__(self, nombre):
         self.nombre = nombre
@@ -35,7 +37,11 @@ while True:
     print('5 - Crear Sprints')
     print('6 - Salir')
 
-    opcion = int(input('Ingrese una opcion: '))
+    try:
+        opcion = int(input('Ingrese una opcion: '))
+    except ValueError:
+        opcion = 100;
+        print("El valor ingresado no es un número entero válido.")
 
     if opcion == 1:
         nombre = input('Ingrese el nombre del cliente: ')
@@ -68,3 +74,6 @@ while True:
        
     elif opcion == 6:
        sys.exit(0)
+
+    else :
+        print('Opcion invalida')
