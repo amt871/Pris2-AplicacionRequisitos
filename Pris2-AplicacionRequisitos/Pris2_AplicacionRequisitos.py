@@ -31,7 +31,7 @@ class Sprint:
 
 clientes = []
 requisitos = []
-Continuar = input('Presione enter para continuar...')
+Mensaje = 'Presione enter para continuar...'
 while True:
     print('1 - Agregar cliente')
     print('2 - Agregar requisito')
@@ -45,15 +45,17 @@ while True:
     except ValueError:
         opcion = 100;
         print("El valor ingresado no es un número entero válido.")
-        Continuar
+
     if opcion == 1:
         nombre = input('Ingrese el nombre del cliente: ')
         clientes.append(Cliente(nombre))
-        
+        input(Mensaje)
+
     elif opcion == 2:
         req = input('Ingrese el nombre del requisito: ')
         requisitos.append(Requisito(req))
-        Continuar
+        input(Mensaje)
+
     elif opcion == 3:
         for i in range(len(clientes)):
             print(i, clientes[i].nombre)
@@ -62,13 +64,15 @@ while True:
             print(i, requisitos[i].nombre)
         req = int(input('Ingrese el numero del requisito: '))
         requisitos[req].agregar_valor(clientes[persona])
-        Continuar
+        input(Mensaje) 
+
     elif opcion == 4:
         for i in range(len(clientes)):
             print(i, clientes[i].nombre)
         persona = int(input('Ingrese el numero del persona: '))
         clientes[persona].agregar_recomendacion() 
-        Continuar  
+        input(Mensaje)  
+
     elif opcion == 5:
         acabado = False
         # Ordenar requisitos por valor
@@ -89,8 +93,8 @@ while True:
                 espacio = espacio - 1
             Sprint = Sprint + 1
             espacio = esfuerzo
-        Continuar
-                  
+            
+                    
     elif opcion == 6:
        sys.exit(0)
 
