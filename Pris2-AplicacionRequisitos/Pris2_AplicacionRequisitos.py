@@ -1,16 +1,21 @@
 class Cliente:
     def __init__(self, nombre):
         self.nombre = nombre
-        self.recomendaciones = 1
+        self.importancia = 1
 
     def agregar_recomendacion(self):
-        self.recomendaciones = self.recomendaciones +  1
-        print('El valor actual del Cliente es' + self.recomendaciones)
+        self.importancia = self.importancia +  1
+        print('El valor actual del Cliente es ' + str(self.importancia))
+
 
 class Requisito:
     def __init__(self, nombre):
         self.nombre = nombre
-        self.opiniones = set()
+        self.valor = 1
+
+    def agregar_valor(self, cliente):
+        self.valor = self.valor + cliente.importancia
+        print('El valor actual del Requisito es ' + str(self.valor))
         
 
 class Sprint:
@@ -35,22 +40,31 @@ while True:
     if opcion == 1:
         nombre = input('Ingrese el nombre del cliente: ')
         clientes.append(Cliente(nombre))
+        input('Presione enter para continuar...')
     elif opcion == 2:
         req = input('Ingrese el nombre del requisito: ')
         requisitos.append(Requisito(req))
-
+        input('Presione enter para continuar...')
     elif opcion == 3:
         for i in range(len(clientes)):
             print(i, clientes[i].nombre)
         persona = int(input('Ingrese el numero del persona: '))
-        clientes[persona].agregar_recomendacion()
+        for i in range(len(requisitos)):
+            print(i, requisitos[i].nombre)
+        req = int(input('Ingrese el numero del requisito: '))
+        requisitos[req].agregar_valor(clientes[persona])
+        input('Presione enter para continuar...')
+    
      
     elif opcion == 4:
-        print('Hola ')
-        
+        for i in range(len(clientes)):
+            print(i, clientes[i].nombre)
+        persona = int(input('Ingrese el numero del persona: '))
+        clientes[persona].agregar_recomendacion() 
+        input('Presione enter para continuar...')
 
-
-        
+         
     #elif opcion == 5:
        
-       
+    elif opcion == 6:
+       sys.exit(0)
