@@ -21,14 +21,7 @@ class Requisito:
         self.valor = self.valor + cliente.importancia
         print('El valor actual del Requisito es ' + str(self.valor))
         
-
-class Sprint:
-    def __init__(self, nombre):
-        self.nombre = nombre
         
-  
-
-
 clientes = []
 requisitos = []
 Mensaje = 'Presione enter para continuar...'
